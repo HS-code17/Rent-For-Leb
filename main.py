@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import requests
 import re
 
-
 valid_pages = '123'
 urls =[]
 for n in range(len(valid_pages)):
@@ -39,56 +38,35 @@ for url in urls:
 			po = pretty.strip()
 			p = dates.append(po)
 
+		# TODO-1:
+
 		# Get their contacts/ phone numbers/ ... 
 		# I need to figure out how to press on that specific element 
 		# then when I press on that specific element I need to figure out how to unveil the price
-		# 
-		# this is new, so I need to fix the code a little
-		#
-		
-		res = [str(i) for i in prices]
-		
-		
+		# try to fit that into a function
+
+		res = [str(i) for i in prices]		
 		final_list = list(zip(res,names,dates))
 		results.extend(final_list)
 		results.sort()
+				
 
-
-
-# dic_prices_location = {}
-# res = [int(i) for i in prices]
-# for key in res:
-# 	for value in names:
-# 		dic_prices_location[key]= value
-# 		# names.remove(value)
-# 		#this will print a sorted list of the keys
-# 		(sorted(dic_prices_location.keys()))
-# 		#this will print the sorted list with items.
-# 		sorted_dic=(sorted(dic_prices_location.items()))
-# 		break
-#
-# print(results)
+# TODO-2:
 # I need to add a way to send this to email + currency converter on the side 
-
 # add also cars prices list 
+def currency_converter():
+	lebanese_rate = None
+	list_of_currencies = ['USD','Euro']
+	conversion = '1$==10,000LBP'
+	pass
 
-
-
-# so maybe create a list that has two lists inside of it one list made of integers and other made of 
-# I want another list that has the smallest prices in it 
-
-
+	
 length_1 = len(results)
-
 length_2 = len(final_list)
-
 app = Flask(__name__,template_folder= "templates")
-
 
 @app.route('/')
 def hello():
 	return render_template('hello.html', result= results, name= length_1, along= length_2)
 
 app.run(host='localhost', port=5000)
-
-		
