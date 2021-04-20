@@ -1,7 +1,10 @@
 from flask import Flask, render_template
 from bs4 import BeautifulSoup
 import requests
+from urllib import request
+import json
 import re
+import time
 
 valid_pages = '123'
 urls =[]
@@ -18,10 +21,10 @@ for url in urls:
 		prices = []
 		names = []
 		dates = []
-
-		# final_list = []
+		contacts = []
 		source = requests.get(url,headers={"user-agent": "curl/7.54.0"})		
 		soup = BeautifulSoup(source.text,'html.parser')
+		print(url)
 		for price in soup('p', class_='ads__item__price'):
 			pretty= price.text
 			po = pretty.strip()
@@ -38,29 +41,29 @@ for url in urls:
 			po = pretty.strip()
 			p = dates.append(po)
 
-		# TODO-1:
-
-		# Get their contacts/ phone numbers/ ... 
-		# I need to figure out how to press on that specific element 
-		# then when I press on that specific element I need to figure out how to unveil the price
-		# try to fit that into a function
+		find_all_a = soup.find_all("a", href=True, class_='ads__item__ad--title')
+		for el in find_all_a:
+			contact_ad_url = el['href']
+			match_id = re.findall(r'(?<=-ID)[\w]*(?=\.html)',contact_ad_url)
+			print(str(match_id))
+			time.sleep(2)
+			for id in match_id:
+				url_of_phone= 'https://www.olx.com.lb/ajax/misc/contact/phone/'+str(id)
+				page = requests.get(url_of_phone, headers={
+					"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:86.0) Gecko/20100101 Firefox/86.0",
+				})
+				time.sleep(3)
+				soup = BeautifulSoup(page.text, 'html.parser')
+				site_json=json.loads(soup.text)
+				print("phone number:\n",site_json['value'])
+			
 
 		res = [str(i) for i in prices]		
-		final_list = list(zip(res,names,dates))
+		final_list = list(zip(res,names,dates,))
 		results.extend(final_list)
 		results.sort()
-				
 
-# TODO-2:
-# I need to add a way to send this to email + currency converter on the side 
-# add also cars prices list 
-def currency_converter():
-	lebanese_rate = None
-	list_of_currencies = ['USD','Euro']
-	conversion = '1$==10,000LBP'
-	pass
 
-	
 length_1 = len(results)
 length_2 = len(final_list)
 app = Flask(__name__,template_folder= "templates")
