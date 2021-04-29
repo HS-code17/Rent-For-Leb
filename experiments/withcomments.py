@@ -4,9 +4,8 @@ import requests
 from urllib import request
 import json
 import re
-import time
 
-valid_pages = '1'
+valid_pages = '123'
 urls =[]
 for n in range(len(valid_pages)):
 		name = "https://www.olx.com.lb/en/properties/apartments-villas-for-rent/"
@@ -22,6 +21,8 @@ for url in urls:
 		names = []
 		dates = []
 		contacts = []
+
+		# final_list = []
 		source = requests.get(url,headers={"user-agent": "curl/7.54.0"})		
 		soup = BeautifulSoup(source.text,'html.parser')
 		print(url)
@@ -41,32 +42,30 @@ for url in urls:
 			po = pretty.strip()
 			p = dates.append(po)
 
+		# a way to extract phone numbers
+		# this should give us the url 
+		# for contact_url in soup('a', class_='ads__item__ad--title'):
+			# print(contact_url['href'])
 		find_all_a = soup.find_all("a", href=True, class_='ads__item__ad--title')
 		for el in find_all_a:
+			# print(el['href'])
 			contact_ad_url = el['href']
+			# we have the contact url with the ad
+			# we just gotta replace the id and url
 			match_id = re.findall(r'(?<=-ID)[\w]*(?=\.html)',contact_ad_url)
-			# print(str(match_id))
-			time.sleep(1)
+			print(str(match_id))
 			for id in match_id:
 				url_of_phone= 'https://www.olx.com.lb/ajax/misc/contact/phone/'+str(id)
 				page = requests.get(url_of_phone, headers={
 					"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:86.0) Gecko/20100101 Firefox/86.0",
 				})
-				time.sleep(1)
 				soup = BeautifulSoup(page.text, 'html.parser')
-				try:
-					site_json=json.loads(soup.text)
-					number= site_json['value']
-					print("phone number:\n",number)
-					# number= site_json['value']
-					contacts.append(str(number))
-				except Exception as e:
-					print(e)
-
-				# print(contacts)
+				site_json=json.loads(soup.text)
+				print("phone number:\n",site_json['value'])
+			
 
 		res = [str(i) for i in prices]		
-		final_list = list(zip(res,names,dates,contacts))
+		final_list = list(zip(res,names,dates,))
 		results.extend(final_list)
 		results.sort()
 
