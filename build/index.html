@@ -1,0 +1,471 @@
+<!DOCTYPE html> 
+  
+<html> 
+<head> 
+    <title>For loop in Flask</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+/*table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}*/
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+#center{
+  text-align: center;
+}
+</style>
+</head>
+<body> 
+  <div id= "center">
+<input id="filter" type="search" class="light-table-filter" data-table="table-info" placeholder="Filter/Search">
+<div>
+  <h2> length of three pages:51</h2>
+  <h2> length of one page:51</h2>
+<table class="table-info table center" border = 1 >
+        <h2 align="center">List</h2>
+        <tr>
+          <th>Prices</th>
+          <th>Locations</th>
+          <th>Time</th>
+          <th>Contacts</th>            
+       </tr>
+         
+            <tr>
+               <td> 1000  </td>
+               <td>Ain El Remmaneh</td>
+               <td>Yesterday 13:43</td>
+               <td>71705507</td>            
+            </tr>
+         
+            <tr>
+               <td> 1000  </td>
+               <td>El Zarif</td>
+               <td>Yesterday 15:05</td>
+               <td>71009890</td>            
+            </tr>
+         
+            <tr>
+               <td> 1000  </td>
+               <td>Hazmiyeh</td>
+               <td>Yesterday 20:41</td>
+               <td>03646967</td>            
+            </tr>
+         
+            <tr>
+               <td> 1000  </td>
+               <td>Hazmiyeh</td>
+               <td>Yesterday 20:54</td>
+               <td>03646967</td>            
+            </tr>
+         
+            <tr>
+               <td> 1000  </td>
+               <td>Manara</td>
+               <td>22  Apr</td>
+               <td>81000213</td>            
+            </tr>
+         
+            <tr>
+               <td> 1000  </td>
+               <td>Monteverde</td>
+               <td>Yesterday 14:46</td>
+               <td>71579999</td>            
+            </tr>
+         
+            <tr>
+               <td> 1000  </td>
+               <td>Rabieh</td>
+               <td>Yesterday 15:15</td>
+               <td>81718161</td>            
+            </tr>
+         
+            <tr>
+               <td> 1000  </td>
+               <td>Rabweh</td>
+               <td>Yesterday 14:48</td>
+               <td>71579999</td>            
+            </tr>
+         
+            <tr>
+               <td> 1000 3900000  </td>
+               <td>Achrafieh</td>
+               <td>Yesterday 12:58</td>
+               <td>03803131</td>            
+            </tr>
+         
+            <tr>
+               <td> 1000 3900000  </td>
+               <td>Achrafieh</td>
+               <td>Yesterday 13:01</td>
+               <td>03803131</td>            
+            </tr>
+         
+            <tr>
+               <td> 1000 3900000  </td>
+               <td>Ain Saadeh</td>
+               <td>Yesterday 12:59</td>
+               <td>03803131</td>            
+            </tr>
+         
+            <tr>
+               <td> 1000 3900000  </td>
+               <td>Beit Mery</td>
+               <td>Yesterday 12:56</td>
+               <td>03803131</td>            
+            </tr>
+         
+            <tr>
+               <td> 1000 3900000  </td>
+               <td>Mansourieh</td>
+               <td>Yesterday 14:47</td>
+               <td>71579999</td>            
+            </tr>
+         
+            <tr>
+               <td> 1000 4000000  </td>
+               <td>Zalka</td>
+               <td>Yesterday 14:52</td>
+               <td>76562399</td>            
+            </tr>
+         
+            <tr>
+               <td> 1200  </td>
+               <td>Achrafieh</td>
+               <td>Yesterday 14:47</td>
+               <td>71579999</td>            
+            </tr>
+         
+            <tr>
+               <td> 1200  </td>
+               <td>Biyada</td>
+               <td>Yesterday 13:02</td>
+               <td>03803131</td>            
+            </tr>
+         
+            <tr>
+               <td> 1200 4680000  </td>
+               <td>Baabdat</td>
+               <td>Yesterday 12:57</td>
+               <td>03803131</td>            
+            </tr>
+         
+            <tr>
+               <td> 1200 4680000  </td>
+               <td>Sin El Fil</td>
+               <td>29  Apr</td>
+               <td>03803131</td>            
+            </tr>
+         
+            <tr>
+               <td> 1250  </td>
+               <td>Louaizeh</td>
+               <td>Yesterday 12:58</td>
+               <td>03803131</td>            
+            </tr>
+         
+            <tr>
+               <td> 1250  </td>
+               <td>Monteverde</td>
+               <td>Yesterday 13:57</td>
+               <td>81998242</td>            
+            </tr>
+         
+            <tr>
+               <td> 1300 1950000  </td>
+               <td>Other in Metn</td>
+               <td>Yesterday 13:02</td>
+               <td>03803131</td>            
+            </tr>
+         
+            <tr>
+               <td> 1500  </td>
+               <td>Dbaye</td>
+               <td>Yesterday 13:08</td>
+               <td>70676162</td>            
+            </tr>
+         
+            <tr>
+               <td> 1600  </td>
+               <td>Beit Mery</td>
+               <td>Yesterday 18:16</td>
+               <td>03357706</td>            
+            </tr>
+         
+            <tr>
+               <td> 1666  </td>
+               <td>Horsh Tabet</td>
+               <td>Yesterday 18:26</td>
+               <td>03362009</td>            
+            </tr>
+         
+            <tr>
+               <td> 1667  </td>
+               <td>Solidere</td>
+               <td>22  Apr</td>
+               <td>81000213</td>            
+            </tr>
+         
+            <tr>
+               <td> 1800  </td>
+               <td>Achrafieh</td>
+               <td>Yesterday 15:40</td>
+               <td>76060364</td>            
+            </tr>
+         
+            <tr>
+               <td> 1800  </td>
+               <td>Faqra</td>
+               <td>Yesterday 21:19</td>
+               <td>03399172</td>            
+            </tr>
+         
+            <tr>
+               <td> 1900  </td>
+               <td>Hamra</td>
+               <td>Yesterday 18:01</td>
+               <td>03817317</td>            
+            </tr>
+         
+            <tr>
+               <td> 2000  </td>
+               <td>Baabda Town</td>
+               <td>Yesterday 20:18</td>
+               <td>70600670</td>            
+            </tr>
+         
+            <tr>
+               <td> 2000  </td>
+               <td>Mar Takla</td>
+               <td>Yesterday 18:25</td>
+               <td>03362009</td>            
+            </tr>
+         
+            <tr>
+               <td> 2000  </td>
+               <td>Saifi</td>
+               <td>Yesterday 20:18</td>
+               <td>70600670</td>            
+            </tr>
+         
+            <tr>
+               <td> 2500  </td>
+               <td>Baabda Town</td>
+               <td>Yesterday 17:21</td>
+               <td>79133737</td>            
+            </tr>
+         
+            <tr>
+               <td> 2500  </td>
+               <td>Dbaye</td>
+               <td>Yesterday 13:09</td>
+               <td>70676162</td>            
+            </tr>
+         
+            <tr>
+               <td> 2750  </td>
+               <td>Achrafieh</td>
+               <td>Yesterday 20:17</td>
+               <td>70600670</td>            
+            </tr>
+         
+            <tr>
+               <td> 300 850000  </td>
+               <td>Khaldeh</td>
+               <td>Yesterday 15:41</td>
+               <td>71334499</td>            
+            </tr>
+         
+            <tr>
+               <td> 3350  </td>
+               <td>Achrafieh</td>
+               <td>Yesterday 15:39</td>
+               <td>03318087</td>            
+            </tr>
+         
+            <tr>
+               <td> 350 1200000  </td>
+               <td>Fanar</td>
+               <td>Yesterday 13:01</td>
+               <td>03803131</td>            
+            </tr>
+         
+            <tr>
+               <td> 400  </td>
+               <td>Ain El Remmaneh</td>
+               <td>Yesterday 16:08</td>
+               <td>70303432</td>            
+            </tr>
+         
+            <tr>
+               <td> 400 4500000  </td>
+               <td>Ain Al Mraiseh</td>
+               <td>Yesterday 18:37</td>
+               <td>70840163</td>            
+            </tr>
+         
+            <tr>
+               <td> 440  </td>
+               <td>Ain El Remmaneh</td>
+               <td>Yesterday 18:16</td>
+               <td>70303432</td>            
+            </tr>
+         
+            <tr>
+               <td> 450 5000000  </td>
+               <td>Hamra</td>
+               <td>Yesterday 18:04</td>
+               <td>70927104</td>            
+            </tr>
+         
+            <tr>
+               <td> 500 1500000  </td>
+               <td>Sad El Baouchriyeh</td>
+               <td>Yesterday 12:57</td>
+               <td>03803131</td>            
+            </tr>
+         
+            <tr>
+               <td> 5400  </td>
+               <td>Solidere</td>
+               <td>Yesterday 15:39</td>
+               <td>03318087</td>            
+            </tr>
+         
+            <tr>
+               <td> 550  </td>
+               <td>Gemmayzeh</td>
+               <td>22  Apr</td>
+               <td>70840163</td>            
+            </tr>
+         
+            <tr>
+               <td> 650  </td>
+               <td>Cornet Chahwan</td>
+               <td>28  Apr</td>
+               <td>03491300</td>            
+            </tr>
+         
+            <tr>
+               <td> 790  </td>
+               <td>Chiyah</td>
+               <td>Yesterday 14:36</td>
+               <td>70303432</td>            
+            </tr>
+         
+            <tr>
+               <td> 800  </td>
+               <td>Hazmiyeh</td>
+               <td>Yesterday 20:59</td>
+               <td>03646967</td>            
+            </tr>
+         
+            <tr>
+               <td> 800 2400000  </td>
+               <td>Baabdat</td>
+               <td>Yesterday 13:01</td>
+               <td>03803131</td>            
+            </tr>
+         
+            <tr>
+               <td> 850  </td>
+               <td>Badaro</td>
+               <td>2  Apr</td>
+               <td>76444329</td>            
+            </tr>
+         
+            <tr>
+               <td> 850 3315000  </td>
+               <td>Zalka</td>
+               <td>Yesterday 13:00</td>
+               <td>None</td>            
+            </tr>
+         
+            <tr>
+               <td> 916  </td>
+               <td>Sehayleh</td>
+               <td>Yesterday 16:47</td>
+               <td>78977878</td>            
+            </tr>
+         
+      </table>
+      <script>
+        (function(document) {
+  'use strict';
+ 
+  var TableFilter = (function(Arr) {
+ 
+    var _input;
+ 
+    function _onInputEvent(e) {
+    _input = e.target;
+    var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+    Arr.forEach.call(tables, function(table) {
+    Arr.forEach.call(table.tBodies, function(tbody) {
+    Arr.forEach.call(tbody.rows, _filter);
+    });
+    });
+    }
+ 
+    function _filter(row) {
+    var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+    row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+    }
+ 
+    return {
+    init: function() {
+    var inputs = document.getElementsByClassName('light-table-filter');
+    Arr.forEach.call(inputs, function(input) {
+    input.oninput = _onInputEvent;
+    });
+    }
+    };
+  })(Array.prototype);
+ 
+  document.addEventListener('readystatechange', function() {
+    if (document.readyState === 'complete') {
+    TableFilter.init();
+    }
+  });
+ 
+})(document);
+      </script>
+</body> 
+</html>
