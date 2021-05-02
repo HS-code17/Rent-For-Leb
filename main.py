@@ -79,4 +79,6 @@ app = Flask(__name__,template_folder= "templates")
 def hello():
 	return render_template('hello.html', result= results, name= length_1, along= length_2)
 
-app.run(host='localhost', port=5000)
+# app.run(host='localhost', port=5000)
+if __name__ == '__main__':
+    app.run(debug=True)
