@@ -12,11 +12,16 @@ Help the lebanese community find apartments.
 
 1. Have an email, phone option to contact the rentees. Rent-For-Leb
 
+### How to Host on Netlify :
+
+1. Drag and drop build folder after running python freeze.py
+
+1. Connect git to netlify and let it do the auto deployment
+
 ### TODO:
 
-[_] add a more generalized ability systemargs; where a user chooses a bunch of options to scrape (cars)
 
-[_] add a todo list of things that need to improved
+[_] add a more generalized ability systemargs; where a user chooses a bunch of options to scrape (cars)
 
 [_] first need to fix css and table view
 

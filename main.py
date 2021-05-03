@@ -6,6 +6,10 @@ import json
 import re
 import time
 
+
+for pages in (user_input_pages):
+	print(pages)
+
 valid_pages = '1'
 urls =[]
 for n in range(len(valid_pages)):
@@ -15,8 +19,6 @@ for n in range(len(valid_pages)):
 		urls.append(url)
 
 results = []
-# prices = []
-# names = []
 for url in urls:
 		prices = []
 		names = []
@@ -77,8 +79,8 @@ app = Flask(__name__,template_folder= "templates")
 
 @app.route('/')
 def hello():
-	return render_template('hello.html', result= results, name= length_1, along= length_2)
+	return render_template('index.html', result= results, name= length_1, along= length_2)
 
 # app.run(host='localhost', port=5000)
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
