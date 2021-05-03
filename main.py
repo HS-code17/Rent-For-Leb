@@ -6,10 +6,6 @@ import json
 import re
 import time
 
-
-for pages in (user_input_pages):
-	print(pages)
-
 valid_pages = '1'
 urls =[]
 for n in range(len(valid_pages)):
@@ -54,7 +50,7 @@ for url in urls:
 				page = requests.get(url_of_phone, headers={
 					"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:86.0) Gecko/20100101 Firefox/86.0",
 				})
-				time.sleep(1)
+				# time.sleep(1)
 				soup = BeautifulSoup(page.text, 'html.parser')
 				try:
 					site_json=json.loads(soup.text)
@@ -83,4 +79,4 @@ def hello():
 
 # app.run(host='localhost', port=5000)
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
