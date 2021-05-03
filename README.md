@@ -20,10 +20,9 @@ Help the lebanese community find apartments.
 
 ### TODO:
 
+[x] added table-sort-js in order to sort the table I have 
 
-[_] add a more generalized ability systemargs; where a user chooses a bunch of options to scrape (cars)
-
-[_] first need to fix css and table view
+[x] Fix css and remove length
 
 [_] have a little currency converter
 
@@ -31,8 +30,4 @@ Help the lebanese community find apartments.
         
         [_] if there was an error in requests
 
-[_] The ability to search big chunks of data; maybe using binary-search or any other algorithm
-        
-        [_] This will help me learn more about algorithms and their implementation
-
-        [_] 
+        [x] added a guard to detect if there was no phone number present
