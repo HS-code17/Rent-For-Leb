@@ -46,3 +46,5 @@ Help the lebanese community find apartments.
 
         [x] added a guard to detect if there was no phone number present
 [_] add systemargs 
+
+[_] add tests to check new data
