@@ -1,4 +1,4 @@
-## A simple web scraper tool
+## Web scraper tool
 
 ## About:
 
